@@ -1,0 +1,43 @@
+{
+  "course_materials": {
+    "digital_pathology_basics": {
+      "title": "أساسيات علم الأمراض الرقمية",
+      "title_en": "Digital Pathology Basics",
+      "description": "مقدمة شاملة في علم الأمراض الرقمية باستخدام Slideflow",
+      "materials": [
+        "tutorial1",
+        "tutorial2",
+        "tutorial3",
+        "tutorial4",
+        "tutorial5",
+        "tutorial6",
+        "tutorial7",
+        "tutorial8",
+        "quickstart"
+      ]
+    },
+    "advanced_techniques": {
+      "title": "التقنيات المتقدمة",
+      "title_en": "Advanced Techniques",
+      "description": "تقنيات متقدمة في التحليل والتصنيف",
+      "materials": []
+    }
+  },
+  "practical_exercises": {
+    "code_examples": [
+      "slideflow/sample_actions.py",
+      "slideflow/test/__init__.py",
+      "slideflow/test/dataset_test.py",
+      "slideflow/test/functional.py",
+      "slideflow/test/model_test.py",
+      "slideflow/test/norm_test.py",
+      "slideflow/test/slide_test.py",
+      "slideflow/test/stats_test.py",
+      "slideflow/test/utils.py",
+      "slideflow/util/example_pb2/__init__.py",
+      "slideflow/util/example_pb2/_proto3_pb2.py",
+      "slideflow/util/example_pb2/_proto4_pb2.py",
+      "scripts/test.py"
+    ]
+  }
+}

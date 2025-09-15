@@ -1,0 +1,198 @@
+{% extends "base.html" %}
+
+{% block title %}الميزات - Features{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <!-- Header Section -->
+    <div class="text-center mb-5">
+        <h1 class="display-5 fw-bold">
+            <i class="bi bi-gear-wide-connected me-3"></i>
+            ميزات Slideflow
+        </h1>
+        <p class="lead text-muted">
+            اكتشف الأدوات والتقنيات المتقدمة لتحليل علم الأمراض الرقمية
+        </p>
+    </div>
+    
+    <!-- Features Grid -->
+    <div class="row g-4 mb-5">
+        {% for feature in features %}
+        <div class="col-lg-6">
+            <div class="card h-100 border-0 shadow-sm">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary bg-opacity-10 rounded-circle p-3 me-3">
+                            <i class="{{ feature.icon }} fs-3 text-primary"></i>
+                        </div>
+                        <div>
+                            <h4 class="card-title mb-1">{{ feature.name }}</h4>
+                            <h6 class="text-muted">{{ feature.name_ar }}</h6>
+                        </div>
+                    </div>
+                    <p class="card-text">{{ feature.description }}</p>
+                    <p class="card-text text-muted">{{ feature.description_ar }}</p>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <!-- Detailed Features -->
+    <div class="row">
+        <div class="col-12">
+            <h2 class="text-center mb-5">التفاصيل التقنية - Technical Details</h2>
+            
+            <!-- Slide Processing -->
+            <div class="card mb-4">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-images me-2"></i>
+                        معالجة الشرائح - Slide Processing
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>الميزات الأساسية:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check text-success me-2"></i>قراءة تنسيقات متعددة للشرائح</li>
+                                <li><i class="bi bi-check text-success me-2"></i>استخراج البلاط بدقة عالية</li>
+                                <li><i class="bi bi-check text-success me-2"></i>تطبيع الألوان المتقدم</li>
+                                <li><i class="bi bi-check text-success me-2"></i>فلترة الجودة التلقائية</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>التنسيقات المدعومة:</h6>
+                            <div class="d-flex flex-wrap gap-2">
+                                <span class="badge bg-secondary">.svs</span>
+                                <span class="badge bg-secondary">.ndpi</span>
+                                <span class="badge bg-secondary">.mrxs</span>
+                                <span class="badge bg-secondary">.scn</span>
+                                <span class="badge bg-secondary">.vms</span>
+                                <span class="badge bg-secondary">.vmu</span>
+                                <span class="badge bg-secondary">.tiff</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Model Training -->
+            <div class="card mb-4">
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-cpu me-2"></i>
+                        تدريب النماذج - Model Training
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h6>أنواع التعلم:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-arrow-left text-primary me-2"></i>التعلم المُراقب</li>
+                                <li><i class="bi bi-arrow-left text-primary me-2"></i>التعلم الذاتي</li>
+                                <li><i class="bi bi-arrow-left text-primary me-2"></i>التعلم متعدد الحالات</li>
+                                <li><i class="bi bi-arrow-left text-primary me-2"></i>الشبكات التوليدية</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>النماذج المُدربة مسبقاً:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-check text-success me-2"></i>ResNet50</li>
+                                <li><i class="bi bi-check text-success me-2"></i>Xception</li>
+                                <li><i class="bi bi-check text-success me-2"></i>EfficientNet</li>
+                                <li><i class="bi bi-check text-success me-2"></i>ViT</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <h6>النماذج الأساسية:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-star text-warning me-2"></i>UNI</li>
+                                <li><i class="bi bi-star text-warning me-2"></i>HistoSSL</li>
+                                <li><i class="bi bi-star text-warning me-2"></i>PLIP</li>
+                                <li><i class="bi bi-star text-warning me-2"></i>CTransPath</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Visualization -->
+            <div class="card mb-4">
+                <div class="card-header bg-info text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-graph-up me-2"></i>
+                        أدوات التصور - Visualization Tools
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-3 text-center">
+                            <div class="bg-danger bg-opacity-10 rounded p-3">
+                                <i class="bi bi-thermometer-half text-danger fs-3"></i>
+                                <h6 class="mt-2">خرائط حرارية</h6>
+                                <small class="text-muted">لتصور نشاط النموذج</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="bg-warning bg-opacity-10 rounded p-3">
+                                <i class="bi bi-grid-3x3 text-warning fs-3"></i>
+                                <h6 class="mt-2">خرائط الفسيفساء</h6>
+                                <small class="text-muted">لاستكشاف البيانات</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="bg-success bg-opacity-10 rounded p-3">
+                                <i class="bi bi-eye text-success fs-3"></i>
+                                <h6 class="mt-2">خرائط البروز</h6>
+                                <small class="text-muted">لفهم القرارات</small>
+                            </div>
+                        </div>
+                        <div class="col-md-3 text-center">
+                            <div class="bg-primary bg-opacity-10 rounded p-3">
+                                <i class="bi bi-bar-chart text-primary fs-3"></i>
+                                <h6 class="mt-2">تحليل الطبقات</h6>
+                                <small class="text-muted">لدراسة التفعيلات</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Performance & Scalability -->
+            <div class="card">
+                <div class="card-header bg-dark text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-speedometer me-2"></i>
+                        الأداء والقابلية للتوسع - Performance & Scalability
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>تحسينات الأداء:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-lightning text-warning me-2"></i>معالجة متوازية للشرائح</li>
+                                <li><i class="bi bi-lightning text-warning me-2"></i>ذاكرة تخزين مؤقت ذكية</li>
+                                <li><i class="bi bi-lightning text-warning me-2"></i>تحسين استخدام GPU</li>
+                                <li><i class="bi bi-lightning text-warning me-2"></i>ضغط البيانات الذكي</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>دعم البنية التحتية:</h6>
+                            <ul class="list-unstyled">
+                                <li><i class="bi bi-server text-info me-2"></i>معالجة موزعة</li>
+                                <li><i class="bi bi-server text-info me-2"></i>تخزين سحابي</li>
+                                <li><i class="bi bi-server text-info me-2"></i>حاويات Docker</li>
+                                <li><i class="bi bi-server text-info me-2"></i>منصات Kubernetes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

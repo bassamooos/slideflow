@@ -1,0 +1,157 @@
+{% extends "base.html" %}
+
+{% block title %}إنشاء مشروع جديد - Create New Project{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">
+                        <i class="bi bi-plus-circle me-2"></i>
+                        إنشاء مشروع جديد - Create New Project
+                    </h4>
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('create_project') }}">
+                        <div class="row g-3">
+                            <div class="col-12">
+                                <label for="project_name" class="form-label">
+                                    <i class="bi bi-tag me-1"></i>
+                                    اسم المشروع - Project Name *
+                                </label>
+                                <input type="text" class="form-control" id="project_name" name="project_name" 
+                                       required placeholder="أدخل اسم المشروع">
+                                <div class="form-text">
+                                    اختر اسماً وصفياً لمشروعك (مثال: تحليل سرطان الرئة)
+                                </div>
+                            </div>
+                            
+                            <div class="col-12">
+                                <label for="annotations_csv" class="form-label">
+                                    <i class="bi bi-file-earmark-spreadsheet me-1"></i>
+                                    ملف التعليقات التوضيحية - Annotations CSV
+                                </label>
+                                <input type="text" class="form-control" id="annotations_csv" name="annotations_csv" 
+                                       placeholder="/path/to/annotations.csv">
+                                <div class="form-text">
+                                    مسار ملف CSV الذي يحتوي على التعليقات التوضيحية للمرضى
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="slides_dir" class="form-label">
+                                    <i class="bi bi-folder me-1"></i>
+                                    مجلد الشرائح - Slides Directory
+                                </label>
+                                <input type="text" class="form-control" id="slides_dir" name="slides_dir" 
+                                       placeholder="/path/to/slides/">
+                                <div class="form-text">
+                                    المجلد الذي يحتوي على ملفات الشرائح
+                                </div>
+                            </div>
+                            
+                            <div class="col-md-6">
+                                <label for="tfrecords_dir" class="form-label">
+                                    <i class="bi bi-database me-1"></i>
+                                    مجلد TFRecords
+                                </label>
+                                <input type="text" class="form-control" id="tfrecords_dir" name="tfrecords_dir" 
+                                       placeholder="/path/to/tfrecords/">
+                                <div class="form-text">
+                                    المجلد لحفظ ملفات TFRecords المُستخرجة
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <hr class="my-4">
+                        
+                        <div class="alert alert-info">
+                            <i class="bi bi-info-circle me-2"></i>
+                            <strong>ملاحظة:</strong>
+                            <ul class="mb-0 mt-2">
+                                <li>يجب أن يحتوي ملف CSV على عمود "slide" مع أسماء الشرائح</li>
+                                <li>الشرائح المدعومة: .svs, .ndpi, .mrxs, .tiff وغيرها</li>
+                                <li>سيتم إنشاء المجلدات المفقودة تلقائياً</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ url_for('index') }}" class="btn btn-secondary">
+                                <i class="bi bi-arrow-right me-2"></i>
+                                إلغاء
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-plus-circle me-2"></i>
+                                إنشاء المشروع
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+            <!-- Quick Start Templates -->
+            <div class="card mt-4">
+                <div class="card-header">
+                    <h5 class="mb-0">
+                        <i class="bi bi-lightning me-2"></i>
+                        قوالب البدء السريع - Quick Start Templates
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <div class="border rounded p-3">
+                                <h6 class="text-primary">
+                                    <i class="bi bi-lungs me-1"></i>
+                                    مشروع سرطان الرئة
+                                </h6>
+                                <p class="text-muted small mb-2">
+                                    قالب مُعد مسبقاً لتحليل سرطان الرئة باستخدام بيانات TCGA
+                                </p>
+                                <button class="btn btn-outline-primary btn-sm" onclick="fillLungTemplate()">
+                                    <i class="bi bi-copy me-1"></i>
+                                    استخدام القالب
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <div class="border rounded p-3">
+                                <h6 class="text-success">
+                                    <i class="bi bi-heart me-1"></i>
+                                    مشروع أمراض القلب
+                                </h6>
+                                <p class="text-muted small mb-2">
+                                    قالب لتحليل أنسجة القلب والأوعية الدموية
+                                </p>
+                                <button class="btn btn-outline-success btn-sm" onclick="fillCardiacTemplate()">
+                                    <i class="bi bi-copy me-1"></i>
+                                    استخدام القالب
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function fillLungTemplate() {
+    document.getElementById('project_name').value = 'lung_adenosquamous_analysis';
+    document.getElementById('annotations_csv').value = '/data/lung/annotations.csv';
+    document.getElementById('slides_dir').value = '/data/lung/slides/';
+    document.getElementById('tfrecords_dir').value = '/data/lung/tfrecords/';
+}
+
+function fillCardiacTemplate() {
+    document.getElementById('project_name').value = 'cardiac_tissue_analysis';
+    document.getElementById('annotations_csv').value = '/data/cardiac/annotations.csv';
+    document.getElementById('slides_dir').value = '/data/cardiac/slides/';
+    document.getElementById('tfrecords_dir').value = '/data/cardiac/tfrecords/';
+}
+</script>
+{% endblock %}

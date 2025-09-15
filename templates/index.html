@@ -1,0 +1,314 @@
+{% extends "base.html" %}
+
+{% block title %}Slideflow - تطبيق علم الأمراض الرقمية{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="bg-gradient-primary text-white py-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4">
+                    <i class="bi bi-microscope me-3"></i>
+                    Slideflow
+                </h1>
+                <p class="lead mb-4">
+                    مكتبة التعلم العميق لعلم الأمراض الرقمية - واجهة سهلة الاستخدام لتطوير النماذج الطبية المتقدمة
+                </p>
+                <p class="fs-5 mb-4">
+                    Deep learning library for digital pathology with user-friendly interface for developing state-of-the-art medical models.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{{ url_for('create_project') }}" class="btn btn-light btn-lg">
+                        <i class="bi bi-plus-circle me-2"></i>
+                        إنشاء مشروع جديد
+                    </a>
+                    <a href="{{ url_for('tutorials') }}" class="btn btn-outline-light btn-lg">
+                        <i class="bi bi-book me-2"></i>
+                        الدروس التعليمية
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-4 text-center">
+                <div class="bg-white bg-opacity-10 rounded-3 p-4">
+                    <i class="bi bi-diagram-3 display-1 text-white mb-3"></i>
+                    <h4 class="text-white">الذكاء الاصطناعي الطبي</h4>
+                    <p class="text-white-50">
+                        تحليل الصور الطبية باستخدام أحدث تقنيات التعلم العميق
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Status Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mx-auto">
+                <div class="card shadow-sm">
+                    <div class="card-body">
+                        <h5 class="card-title d-flex align-items-center">
+                            <i class="bi bi-gear-fill me-2 text-primary"></i>
+                            حالة النظام - System Status
+                        </h5>
+                        <div class="row g-3 mt-2">
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    {% if slideflow_info.available %}
+                                        <i class="bi bi-check-circle-fill text-success fs-4 me-3"></i>
+                                        <div>
+                                            <strong class="text-success">Slideflow متاح</strong>
+                                            {% if slideflow_info.version %}
+                                                <br><small class="text-muted">الإصدار: {{ slideflow_info.version }}</small>
+                                            {% endif %}
+                                        </div>
+                                    {% else %}
+                                        <i class="bi bi-x-circle-fill text-warning fs-4 me-3"></i>
+                                        <div>
+                                            <strong class="text-warning">Slideflow غير متاح</strong>
+                                            <br><small class="text-muted">بعض الميزات محدودة</small>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="d-flex align-items-center">
+                                    <i class="bi bi-cpu-fill text-info fs-4 me-3"></i>
+                                    <div>
+                                        <strong class="text-info">المعالج الخلفي</strong>
+                                        <br><small class="text-muted">{{ slideflow_info.backend or 'auto' }}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        {% if not slideflow_info.available %}
+                        <div class="alert alert-warning mt-3 mb-0">
+                            <i class="bi bi-exclamation-triangle me-2"></i>
+                            <strong>تنبيه:</strong> 
+                            Slideflow غير مثبت. لاستخدام جميع الميزات، يرجى تثبيت Slideflow أولاً.
+                            <br>
+                            <small>
+                                يمكنك تثبيته باستخدام: 
+                                <code>pip install slideflow[cucim] cupy-cuda11x</code>
+                            </small>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Overview -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="fw-bold">الميزات الرئيسية - Key Features</h2>
+                <p class="text-muted lead">
+                    أدوات شاملة لتحليل علم الأمراض الرقمية باستخدام الذكاء الاصطناعي
+                </p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                            <i class="bi bi-images fs-1 text-primary"></i>
+                        </div>
+                        <h5 class="card-title">معالجة الشرائح</h5>
+                        <p class="card-text text-muted">
+                            معالجة متقدمة للصور الكاملة للشرائح واستخراج البلاط مع أدوات تطبيع الألوان
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-success bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                            <i class="bi bi-cpu fs-1 text-success"></i>
+                        </div>
+                        <h5 class="card-title">تدريب النماذج</h5>
+                        <p class="card-text text-muted">
+                            تدريب نماذج التعلم العميق للتحليل الطبي مع دعم التعلم المُراقب وغير المُراقب
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-info bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                            <i class="bi bi-graph-up fs-1 text-info"></i>
+                        </div>
+                        <h5 class="card-title">التصور التفاعلي</h5>
+                        <p class="card-text text-muted">
+                            خرائط حرارية تفاعلية وأدوات تصور متقدمة لفهم نتائج النماذج
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card h-100 border-0 shadow-sm">
+                    <div class="card-body text-center">
+                        <div class="bg-warning bg-opacity-10 rounded-circle p-3 d-inline-block mb-3">
+                            <i class="bi bi-layers fs-1 text-warning"></i>
+                        </div>
+                        <h5 class="card-title">النماذج الأساسية</h5>
+                        <p class="card-text text-muted">
+                            نماذج أساسية مُدربة مسبقاً للحصول على نتائج سريعة ودقيقة
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Quick Actions -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center mb-5">
+                <h2 class="fw-bold">إجراءات سريعة - Quick Actions</h2>
+                <p class="text-muted lead">ابدأ مشروعك الأول أو استكشف الأدوات المتاحة</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-4">
+                <div class="card border-primary">
+                    <div class="card-body text-center">
+                        <i class="bi bi-plus-circle text-primary display-4 mb-3"></i>
+                        <h5 class="card-title">إنشاء مشروع جديد</h5>
+                        <p class="card-text text-muted">
+                            ابدأ مشروع تحليل جديد باستخدام بياناتك الطبية
+                        </p>
+                        <a href="{{ url_for('create_project') }}" class="btn btn-primary">
+                            <i class="bi bi-arrow-left me-2"></i>
+                            إنشاء الآن
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-success">
+                    <div class="card-body text-center">
+                        <i class="bi bi-folder text-success display-4 mb-3"></i>
+                        <h5 class="card-title">استعراض المشاريع</h5>
+                        <p class="card-text text-muted">
+                            راجع المشاريع الموجودة وتابع التقدم المحرز
+                        </p>
+                        <a href="{{ url_for('projects_list') }}" class="btn btn-success">
+                            <i class="bi bi-arrow-left me-2"></i>
+                            عرض المشاريع
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="card border-info">
+                    <div class="card-body text-center">
+                        <i class="bi bi-book text-info display-4 mb-3"></i>
+                        <h5 class="card-title">الدروس التعليمية</h5>
+                        <p class="card-text text-muted">
+                            تعلم كيفية استخدام Slideflow خطوة بخطوة
+                        </p>
+                        <a href="{{ url_for('tutorials') }}" class="btn btn-info">
+                            <i class="bi bi-arrow-left me-2"></i>
+                            بدء التعلم
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Latest Updates -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">
+                            <i class="bi bi-bell me-2"></i>
+                            آخر التحديثات - Latest Updates
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex align-items-start mb-3">
+                            <div class="bg-success rounded-circle p-2 me-3">
+                                <i class="bi bi-check2 text-white"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">إطلاق واجهة الويب</h6>
+                                <p class="text-muted mb-1">
+                                    تم إطلاق واجهة الويب الجديدة لـ Slideflow مع دعم اللغة العربية
+                                </p>
+                                <small class="text-muted">
+                                    <i class="bi bi-calendar3 me-1"></i>
+                                    اليوم
+                                </small>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start mb-3">
+                            <div class="bg-info rounded-circle p-2 me-3">
+                                <i class="bi bi-plus text-white"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">ميزات جديدة</h6>
+                                <p class="text-muted mb-1">
+                                    إضافة دعم النماذج الأساسية الجديدة وأدوات التصور المحسنة
+                                </p>
+                                <small class="text-muted">
+                                    <i class="bi bi-calendar3 me-1"></i>
+                                    هذا الأسبوع
+                                </small>
+                            </div>
+                        </div>
+                        
+                        <div class="d-flex align-items-start">
+                            <div class="bg-warning rounded-circle p-2 me-3">
+                                <i class="bi bi-gear text-white"></i>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">تحسينات الأداء</h6>
+                                <p class="text-muted mb-1">
+                                    تحسينات على سرعة معالجة الشرائح واستخراج الميزات
+                                </p>
+                                <small class="text-muted">
+                                    <i class="bi bi-calendar3 me-1"></i>
+                                    الأسبوع الماضي
+                                </small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_head %}
+<style>
+    .bg-gradient-primary {
+        background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+    }
+</style>
+{% endblock %}
