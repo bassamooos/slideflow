@@ -1,0 +1,318 @@
+{
+  "tutorials": {
+    "tutorial1": {
+      "title": "Tutorial 1: Model training (simple)",
+      "title_ar": "Tutorial (درس تعليمي) 1: Model training (simple)",
+      "file_path": "/home/user/webapp/docs-source/source/tutorial1.rst",
+      "sections": [
+        "Tutorial 1: Model training (simple)"
+      ],
+      "word_count": 936,
+      "difficulty": "beginner",
+      "category": "tutorial",
+      "language": "en"
+    },
+    "tutorial2": {
+      "title": "Tutorial 2: Model training (advanced)",
+      "title_ar": "Tutorial (درس تعليمي) 2: Model training (advanced)",
+      "file_path": "/home/user/webapp/docs-source/source/tutorial2.rst",
+      "sections": [
+        "Tutorial 2: Model training (advanced)"
+      ],
+      "word_count": 1031,
+      "difficulty": "advanced",
+      "category": "tutorial",
+      "language": "en"
+    },
+    "tutorial3": {
+      "title": "Tutorial 3: Using a custom architecture",
+      "title_ar": "Tutorial (درس تعليمي) 3: Using a custom architecture",
+      "file_path": "/home/user/webapp/docs-source/source/tutorial3.rst",
+      "sections": [
+        "Tutorial 3: Using a custom architecture"
+      ],
+      "word_count": 847,
+      "difficulty": "beginner",
+      "category": "tutorial",
+      "language": "en"
+    },
+    "tutorial4": {
+      "title": "Tutorial 4: Model evaluation & heatmaps",
+      "title_ar": "Tutorial (درس تعليمي) 4: Model evaluation & heatmaps",
+      "file_path": "/home/user/webapp/docs-source/source/tutorial4.rst",
+      "sections": [
+        "Tutorial 4: Model evaluation & heatmaps",
+        "From a dataset",
+        "From a single slide"
+      ],
+      "word_count": 733,
+      "difficulty": "beginner",
+      "category": "tutorial",
+      "language": "en"
+    },
+    "tutorial5": {
+      "title": "Tutorial 5: Creating a mosaic map",
+      "title_ar": "Tutorial (درس تعليمي) 5: Creating a mosaic map",
+      "file_path": "/home/user/webapp/docs-source/source/tutorial5.rst",
+      "sections": [
+        "Tutorial 5: Creating a mosaic map"
+      ],
+      "word_count": 993,
+      "difficulty": "beginner",
+      "category": "tutorial",
+      "language": "en"
+    },
+    "tutorial6": {
+      "title": "Tutorial 6: Custom slide filtering",
+      "title_ar": "Tutorial (درس تعليمي) 6: Custom slide filtering",
+      "file_path": "/home/user/webapp/docs-source/source/tutorial6.rst",
+      "sections": [
+        "Tutorial 6: Custom slide filtering"
+      ],
+      "word_count": 266,
+      "difficulty": "beginner",
+      "category": "tutorial",
+      "language": "en"
+    },
+    "tutorial7": {
+      "title": "Tutorial 7: Training with custom augmentations",
+      "title_ar": "Tutorial (درس تعليمي) 7: Training with custom augmentations",
+      "file_path": "/home/user/webapp/docs-source/source/tutorial7.rst",
+      "sections": [
+        "Tutorial 7: Training with custom augmentations"
+      ],
+      "word_count": 549,
+      "difficulty": "beginner",
+      "category": "tutorial",
+      "language": "en"
+    },
+    "tutorial8": {
+      "title": "Tutorial 8: Multiple-Instance Learning",
+      "title_ar": "Tutorial (درس تعليمي) 8: Multiple-Instance Learning",
+      "file_path": "/home/user/webapp/docs-source/source/tutorial8.rst",
+      "sections": [
+        "Tutorial 8: Multiple-Instance Learning"
+      ],
+      "word_count": 1007,
+      "difficulty": "intermediate",
+      "category": "tutorial",
+      "language": "en"
+    },
+    "quickstart": {
+      "title": "Quickstart",
+      "title_ar": "Quickstart (محتوى تعليمي)",
+      "file_path": "/home/user/webapp/docs-source/source/quickstart.rst",
+      "sections": [
+        "Quickstart",
+        "Tile extraction",
+        "Held-out test sets"
+      ],
+      "word_count": 864,
+      "difficulty": "advanced",
+      "category": "tutorial",
+      "language": "en"
+    }
+  },
+  "documentation": {
+    "installation": {
+      "title": "Installation",
+      "title_ar": "Installation (التثبيت)",
+      "file_path": "/home/user/webapp/docs-source/source/installation.rst",
+      "word_count": 726,
+      "category": "documentation",
+      "language": "en"
+    },
+    "overview": {
+      "title": "Overview",
+      "title_ar": "Overview (نظرة عامة)",
+      "file_path": "/home/user/webapp/docs-source/source/overview.rst",
+      "word_count": 593,
+      "category": "documentation",
+      "language": "en"
+    },
+    "project_setup": {
+      "title": "Setting up a Project",
+      "title_ar": "Setting up a Project (محتوى تعليمي)",
+      "file_path": "/home/user/webapp/docs-source/source/project_setup.rst",
+      "word_count": 686,
+      "category": "documentation",
+      "language": "en"
+    },
+    "slide_processing": {
+      "title": "Slide Processing",
+      "title_ar": "Slide Processing (معالجة الشرائح)",
+      "file_path": "/home/user/webapp/docs-source/source/slide_processing.rst",
+      "word_count": 2572,
+      "category": "documentation",
+      "language": "en"
+    },
+    "training": {
+      "title": "Training",
+      "title_ar": "Training (التدريب)",
+      "file_path": "/home/user/webapp/docs-source/source/training.rst",
+      "word_count": 2041,
+      "category": "documentation",
+      "language": "en"
+    },
+    "evaluation": {
+      "title": "Evaluation",
+      "title_ar": "Evaluation (التقييم)",
+      "file_path": "/home/user/webapp/docs-source/source/evaluation.rst",
+      "word_count": 718,
+      "category": "documentation",
+      "language": "en"
+    },
+    "features": {
+      "title": "Generating Features",
+      "title_ar": "Generating Features (الميزات)",
+      "file_path": "/home/user/webapp/docs-source/source/features.rst",
+      "word_count": 2201,
+      "category": "documentation",
+      "language": "en"
+    },
+    "model": {
+      "title": "slideflow.model",
+      "title_ar": "slideflow.model",
+      "file_path": "/home/user/webapp/docs-source/source/model.rst",
+      "word_count": 216,
+      "category": "documentation",
+      "language": "en"
+    },
+    "dataset": {
+      "title": "slideflow.Dataset",
+      "title_ar": "slideflow.Dataset (مجموعة البيانات)",
+      "file_path": "/home/user/webapp/docs-source/source/dataset.rst",
+      "word_count": 221,
+      "category": "documentation",
+      "language": "en"
+    }
+  },
+  "code_examples": {
+    "slideflow/sample_actions.py": {
+      "file_path": "/home/user/webapp/slideflow/sample_actions.py",
+      "docstring": "",
+      "functions_count": 1,
+      "classes_count": 0,
+      "lines_count": 43,
+      "category": "code",
+      "language": "python"
+    },
+    "slideflow/test/__init__.py": {
+      "file_path": "/home/user/webapp/slideflow/test/__init__.py",
+      "docstring": "Supervises functional testing of the Slideflow pipeline.",
+      "functions_count": 0,
+      "classes_count": 1,
+      "lines_count": 857,
+      "category": "code",
+      "language": "python"
+    },
+    "slideflow/test/dataset_test.py": {
+      "file_path": "/home/user/webapp/slideflow/test/dataset_test.py",
+      "docstring": "",
+      "functions_count": 0,
+      "classes_count": 3,
+      "lines_count": 306,
+      "category": "code",
+      "language": "python"
+    },
+    "slideflow/test/functional.py": {
+      "file_path": "/home/user/webapp/slideflow/test/functional.py",
+      "docstring": "Tests generation of intermediate layer activations.\n\n    Function must happen in an isolated process to free GPU memory when done.",
+      "functions_count": 8,
+      "classes_count": 0,
+      "lines_count": 301,
+      "category": "code",
+      "language": "python"
+    },
+    "slideflow/test/model_test.py": {
+      "file_path": "/home/user/webapp/slideflow/test/model_test.py",
+      "docstring": "",
+      "functions_count": 0,
+      "classes_count": 1,
+      "lines_count": 217,
+      "category": "code",
+      "language": "python"
+    },
+    "slideflow/test/norm_test.py": {
+      "file_path": "/home/user/webapp/slideflow/test/norm_test.py",
+      "docstring": "",
+      "functions_count": 0,
+      "classes_count": 1,
+      "lines_count": 324,
+      "category": "code",
+      "language": "python"
+    },
+    "slideflow/test/slide_test.py": {
+      "file_path": "/home/user/webapp/slideflow/test/slide_test.py",
+      "docstring": "",
+      "functions_count": 0,
+      "classes_count": 1,
+      "lines_count": 75,
+      "category": "code",
+      "language": "python"
+    },
+    "slideflow/test/stats_test.py": {
+      "file_path": "/home/user/webapp/slideflow/test/stats_test.py",
+      "docstring": "",
+      "functions_count": 0,
+      "classes_count": 2,
+      "lines_count": 297,
+      "category": "code",
+      "language": "python"
+    },
+    "slideflow/test/utils.py": {
+      "file_path": "/home/user/webapp/slideflow/test/utils.py",
+      "docstring": "Tests throughput of image normalization with a single thread.\n\n    Returns:\n        float: images/sec.",
+      "functions_count": 7,
+      "classes_count": 2,
+      "lines_count": 361,
+      "category": "code",
+      "language": "python"
+    },
+    "slideflow/util/example_pb2/__init__.py": {
+      "file_path": "/home/user/webapp/slideflow/util/example_pb2/__init__.py",
+      "docstring": "",
+      "functions_count": 0,
+      "classes_count": 0,
+      "lines_count": 9,
+      "category": "code",
+      "language": "python"
+    },
+    "slideflow/util/example_pb2/_proto3_pb2.py": {
+      "file_path": "/home/user/webapp/slideflow/util/example_pb2/_proto3_pb2.py",
+      "docstring": "",
+      "functions_count": 0,
+      "classes_count": 0,
+      "lines_count": 530,
+      "category": "code",
+      "language": "python"
+    },
+    "slideflow/util/example_pb2/_proto4_pb2.py": {
+      "file_path": "/home/user/webapp/slideflow/util/example_pb2/_proto4_pb2.py",
+      "docstring": "Generated protocol buffer code.",
+      "functions_count": 0,
+      "classes_count": 0,
+      "lines_count": 24,
+      "category": "code",
+      "language": "python"
+    },
+    "scripts/test.py": {
+      "file_path": "/home/user/webapp/scripts/test.py",
+      "docstring": "",
+      "functions_count": 1,
+      "classes_count": 0,
+      "lines_count": 100,
+      "category": "code",
+      "language": "python"
+    }
+  },
+  "metadata": {
+    "extraction_date": "2025-09-15T22:05:50.442616",
+    "total_files": 31,
+    "categories": {
+      "tutorials": 9,
+      "documentation": 9,
+      "code_examples": 13
+    }
+  }
+}

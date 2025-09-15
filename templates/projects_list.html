@@ -1,0 +1,233 @@
+{% extends "base.html" %}
+
+{% block title %}قائمة المشاريع - Projects List{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold">
+                    <i class="bi bi-folder me-2"></i>
+                    قائمة المشاريع - Projects List
+                </h2>
+                <a href="{{ url_for('create_project') }}" class="btn btn-primary">
+                    <i class="bi bi-plus-circle me-2"></i>
+                    مشروع جديد
+                </a>
+            </div>
+            
+            {% if projects %}
+                <div class="row g-4">
+                    {% for project in projects %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="bg-primary bg-opacity-10 rounded-circle p-2 me-3">
+                                        <i class="bi bi-folder-fill text-primary"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title mb-1">{{ project.name }}</h5>
+                                        <small class="text-muted">
+                                            <i class="bi bi-calendar3 me-1"></i>
+                                            {{ project.created_at[:10] if project.created_at else 'غير معروف' }}
+                                        </small>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <div class="row g-2 text-center">
+                                        <div class="col-4">
+                                            <div class="bg-light rounded p-2">
+                                                <i class="bi bi-images text-info d-block mb-1"></i>
+                                                <small class="text-muted">الشرائح</small>
+                                                <div class="fw-bold">--</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="bg-light rounded p-2">
+                                                <i class="bi bi-grid text-success d-block mb-1"></i>
+                                                <small class="text-muted">البلاط</small>
+                                                <div class="fw-bold">--</div>
+                                            </div>
+                                        </div>
+                                        <div class="col-4">
+                                            <div class="bg-light rounded p-2">
+                                                <i class="bi bi-cpu text-warning d-block mb-1"></i>
+                                                <small class="text-muted">النماذج</small>
+                                                <div class="fw-bold">--</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    {% if project.annotations %}
+                                        <div class="d-flex align-items-center text-success mb-1">
+                                            <i class="bi bi-check-circle me-2"></i>
+                                            <small>ملف التعليقات التوضيحية متصل</small>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    {% if project.slides %}
+                                        <div class="d-flex align-items-center text-success mb-1">
+                                            <i class="bi bi-check-circle me-2"></i>
+                                            <small>مجلد الشرائح متصل</small>
+                                        </div>
+                                    {% endif %}
+                                    
+                                    {% if project.tfrecords %}
+                                        <div class="d-flex align-items-center text-info mb-1">
+                                            <i class="bi bi-database me-2"></i>
+                                            <small>مجلد TFRecords محدد</small>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                                
+                                <div class="d-flex gap-2">
+                                    <a href="{{ url_for('project_detail', project_name=project.name) }}" 
+                                       class="btn btn-outline-primary btn-sm flex-fill">
+                                        <i class="bi bi-eye me-1"></i>
+                                        عرض التفاصيل
+                                    </a>
+                                    <button class="btn btn-outline-secondary btn-sm" 
+                                            onclick="shareProject('{{ project.name }}')">
+                                        <i class="bi bi-share"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+                
+                <div class="text-center mt-5">
+                    <p class="text-muted">
+                        <i class="bi bi-info-circle me-1"></i>
+                        لديك {{ projects|length }} مشروع{{ 'اً' if projects|length > 10 else '' }}
+                    </p>
+                </div>
+            {% else %}
+                <!-- Empty State -->
+                <div class="text-center py-5">
+                    <div class="mb-4">
+                        <i class="bi bi-folder-x display-1 text-muted"></i>
+                    </div>
+                    <h4 class="text-muted mb-3">لا توجد مشاريع حتى الآن</h4>
+                    <p class="text-muted mb-4 lead">
+                        ابدأ رحلتك في تحليل علم الأمراض الرقمية بإنشاء مشروعك الأول
+                    </p>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{{ url_for('create_project') }}" class="btn btn-primary btn-lg">
+                            <i class="bi bi-plus-circle me-2"></i>
+                            إنشاء مشروع جديد
+                        </a>
+                        <a href="{{ url_for('tutorials') }}" class="btn btn-outline-secondary btn-lg">
+                            <i class="bi bi-book me-2"></i>
+                            تعلم كيفية البدء
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Getting Started Guide -->
+                <div class="row mt-5">
+                    <div class="col-lg-8 mx-auto">
+                        <div class="card border-primary">
+                            <div class="card-header bg-primary text-white">
+                                <h5 class="mb-0">
+                                    <i class="bi bi-lightbulb me-2"></i>
+                                    دليل البدء السريع - Quick Start Guide
+                                </h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row g-3">
+                                    <div class="col-md-4 text-center">
+                                        <div class="bg-primary bg-opacity-10 rounded-circle p-3 d-inline-block mb-2">
+                                            <span class="badge bg-primary rounded-pill">1</span>
+                                        </div>
+                                        <h6>إنشاء مشروع</h6>
+                                        <p class="text-muted small">
+                                            ابدأ بإنشاء مشروع جديد وتحديد مصادر البيانات
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="col-md-4 text-center">
+                                        <div class="bg-success bg-opacity-10 rounded-circle p-3 d-inline-block mb-2">
+                                            <span class="badge bg-success rounded-pill">2</span>
+                                        </div>
+                                        <h6>معالجة الشرائح</h6>
+                                        <p class="text-muted small">
+                                            استخرج البلاط من الشرائح وقم بمعالجتها
+                                        </p>
+                                    </div>
+                                    
+                                    <div class="col-md-4 text-center">
+                                        <div class="bg-info bg-opacity-10 rounded-circle p-3 d-inline-block mb-2">
+                                            <span class="badge bg-info rounded-pill">3</span>
+                                        </div>
+                                        <h6>تدريب النماذج</h6>
+                                        <p class="text-muted small">
+                                            دَرِّب نماذج الذكاء الاصطناعي وقَيِّم النتائج
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Share Project Modal -->
+<div class="modal fade" id="shareModal" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">مشاركة المشروع</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                <p>رابط المشروع:</p>
+                <div class="input-group">
+                    <input type="text" class="form-control" id="shareUrl" readonly>
+                    <button class="btn btn-outline-secondary" onclick="copyToClipboard()">
+                        <i class="bi bi-clipboard"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function shareProject(projectName) {
+    const url = window.location.origin + "{{ url_for('project_detail', project_name='PROJECT_NAME') }}".replace('PROJECT_NAME', projectName);
+    document.getElementById('shareUrl').value = url;
+    
+    const modal = new bootstrap.Modal(document.getElementById('shareModal'));
+    modal.show();
+}
+
+function copyToClipboard() {
+    const shareUrl = document.getElementById('shareUrl');
+    shareUrl.select();
+    shareUrl.setSelectionRange(0, 99999);
+    
+    try {
+        document.execCommand('copy');
+        // Show success feedback
+        const btn = event.target.closest('button');
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="bi bi-check text-success"></i>';
+        setTimeout(() => {
+            btn.innerHTML = originalHTML;
+        }, 2000);
+    } catch (err) {
+        console.error('Failed to copy: ', err);
+    }
+}
+</script>
+{% endblock %}

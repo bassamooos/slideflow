@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% block title %}النماذج المتاحة - Available Models{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-center mb-5">
+                <h1 class="display-5 fw-bold">
+                    <i class="bi bi-cpu me-3"></i>
+                    النماذج المتاحة
+                </h1>
+                <p class="lead text-muted">
+                    استكشف النماذج المُدربة مسبقاً ومُستخرجات الميزات المتاحة في Slideflow
+                </p>
+            </div>
+            
+            {% if models %}
+                <div class="row g-4">
+                    {% for model in models %}
+                    <div class="col-lg-4 col-md-6">
+                        <div class="card h-100 border-0 shadow-sm">
+                            <div class="card-body">
+                                <div class="d-flex align-items-center mb-3">
+                                    <div class="bg-{{ 'primary' if model.type == 'Foundation Model' else 'success' }} bg-opacity-10 rounded-circle p-2 me-3">
+                                        <i class="bi bi-{{ 'star' if model.type == 'Foundation Model' else 'gear' }} text-{{ 'primary' if model.type == 'Foundation Model' else 'success' }}"></i>
+                                    </div>
+                                    <div>
+                                        <h5 class="card-title mb-1">{{ model.name }}</h5>
+                                        <span class="badge bg-{{ 'primary' if model.type == 'Foundation Model' else 'success' }}">
+                                            {{ model.type }}
+                                        </span>
+                                    </div>
+                                </div>
+                                <p class="card-text text-muted">{{ model.description }}</p>
+                                
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-primary btn-sm flex-fill" 
+                                            onclick="showModelDetails('{{ model.name }}')">
+                                        <i class="bi bi-info-circle me-1"></i>
+                                        التفاصيل
+                                    </button>
+                                    <button class="btn btn-outline-success btn-sm flex-fill"
+                                            onclick="useModel('{{ model.name }}')">
+                                        <i class="bi bi-play me-1"></i>
+                                        استخدام
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="text-center py-5">
+                    <i class="bi bi-cpu display-1 text-muted"></i>
+                    <h4 class="text-muted mt-3">لا توجد نماذج متاحة</h4>
+                    <p class="text-muted">
+                        يرجى تثبيت Slideflow أولاً لعرض النماذج المتاحة
+                    </p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+<!-- Model Details Modal -->
+<div class="modal fade" id="modelDetailsModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">تفاصيل النموذج</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body" id="modelDetailsContent">
+                <!-- Content will be loaded dynamically -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+function showModelDetails(modelName) {
+    const modalContent = document.getElementById('modelDetailsContent');
+    
+    // Sample model details (in real app, fetch from API)
+    const modelDetails = {
+        'resnet50': {
+            name: 'ResNet-50',
+            description: 'شبكة عصبية متبقية عميقة مكونة من 50 طبقة',
+            parameters: '25.6M',
+            inputSize: '224x224',
+            accuracy: '76.1%',
+            usage: 'تصنيف الصور الطبية العام'
+        },
+        'xception': {
+            name: 'Xception',
+            description: 'شبكة عصبية تعتمد على التفكيك القابل للفصل بعمق',
+            parameters: '22.9M',
+            inputSize: '299x299',
+            accuracy: '79.0%',
+            usage: 'استخراج الميزات المتقدمة'
+        }
+        // Add more model details as needed
+    };
+    
+    const details = modelDetails[modelName] || {
+        name: modelName,
+        description: 'نموذج متقدم لتحليل الصور الطبية',
+        parameters: 'غير محدد',
+        inputSize: 'متغير',
+        accuracy: 'غير محدد',
+        usage: 'تحليل علم الأمراض الرقمية'
+    };
+    
+    modalContent.innerHTML = `
+        <div class="row g-3">
+            <div class="col-12">
+                <h6>${details.name}</h6>
+                <p class="text-muted">${details.description}</p>
+            </div>
+            <div class="col-md-6">
+                <strong>عدد المعاملات:</strong><br>
+                <span class="text-muted">${details.parameters}</span>
+            </div>
+            <div class="col-md-6">
+                <strong>حجم الدخل:</strong><br>
+                <span class="text-muted">${details.inputSize}</span>
+            </div>
+            <div class="col-md-6">
+                <strong>الدقة:</strong><br>
+                <span class="text-muted">${details.accuracy}</span>
+            </div>
+            <div class="col-md-6">
+                <strong>الاستخدام:</strong><br>
+                <span class="text-muted">${details.usage}</span>
+            </div>
+        </div>
+    `;
+    
+    const modal = new bootstrap.Modal(document.getElementById('modelDetailsModal'));
+    modal.show();
+}
+
+function useModel(modelName) {
+    // Redirect to project creation with pre-selected model
+    window.location.href = "{{ url_for('create_project') }}?model=" + encodeURIComponent(modelName);
+}
+</script>
+{% endblock %}
